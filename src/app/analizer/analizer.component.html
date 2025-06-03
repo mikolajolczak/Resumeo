@@ -1,0 +1,62 @@
+<div class="container">
+  <nav>
+    <div>
+      <a href="#">O nas</a>
+      <a href="#">FAQ</a>
+      <a href="#">Kontakt</a>
+    </div>
+    <div>
+      <span>Logowanie</span>
+      <fa-icon [icon]="faFacebookF" [style]="{'font-size':'1em', 'margin-left':'1rem'}"/>
+      <fa-icon [icon]="faLinkedinIn" [style]="{'font-size':'1em', 'margin-left':'1rem'}"/>
+      <fa-icon [icon]="faXTwitter" [style]="{'font-size':'1em', 'margin-left':'1rem'}"/>
+    </div>
+  </nav>
+  <div class="logo">
+    <fa-icon [icon]="faIdCard" [style]="{'font-size':'2em', margin:'0.5rem'}"/>
+    <div>
+    <span class="logo-text">RESUMEO</span>
+    <span class="slogan">OSCZĘDZAJ CZAS, NIE TALENTY</span>
+    </div>
+  </div>
+  <div class="toolbar">
+    <div class="toolbar-left">
+    <div class="toolbar-item">
+        <fa-icon [icon]="faPlusCircle" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
+        <p>Dodaj CV</p>
+    </div>
+    <div class="toolbar-item">
+        <fa-icon [icon]="faGears" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
+        <p>Stanowiska</p>
+    </div>
+    </div>
+    <div class="toolbar-right">
+        <fa-icon [icon]="faStar" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
+        <fa-icon [icon]="faStar" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
+        <fa-icon [icon]="faStarHalfStroke" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
+        <p>Oceń</p>
+    </div>
+  </div>
+  <div class="table">
+    <div class="table-row">
+        <div></div>
+        <div>Imię i nazwisko</div>
+        <div>Stanowisko</div>
+        <div>Data dodania</div>
+        <div>Ocena</div>
+        <div>Akcja</div>
+    </div>
+    <div *ngFor="let candidate of candidates" class="table-row">
+        <div></div>
+        <div>{{candidate.name}}</div>
+        <div>{{candidate.appointment}}</div>
+        <div>{{candidate.date}}</div>
+        <div>{{candidate.score}}</div>
+        <div>Akcja</div>
+    </div>
+  </div>
+
+  <footer>
+    (C) Resumeo. Wszelkie prawa zastrzeżone
+  </footer>
+</div>

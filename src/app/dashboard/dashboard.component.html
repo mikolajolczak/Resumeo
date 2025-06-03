@@ -1,0 +1,60 @@
+<div class="container">
+  <nav>
+    <div>
+      <a href="#">O nas</a>
+      <a href="#">FAQ</a>
+      <a href="#">Kontakt</a>
+    </div>
+    <div>
+      <span>Logowanie</span>
+      <fa-icon [icon]="faFacebookF" [style]="{'font-size':'1em', 'margin-left':'1rem'}"/>
+      <fa-icon [icon]="faLinkedinIn" [style]="{'font-size':'1em', 'margin-left':'1rem'}"/>
+      <fa-icon [icon]="faXTwitter" [style]="{'font-size':'1em', 'margin-left':'1rem'}"/>
+    </div>
+  </nav>
+  <div class="logo">
+    <fa-icon [icon]="faIdCard" [style]="{'font-size':'2em', margin:'0.5rem'}"/>
+    <div>
+    <span class="logo-text">RESUMEO</span>
+    <span class="slogan">OSCZĘDZAJ CZAS, NIE TALENTY</span>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="hero-text">
+    <h1>Automatyczna ocena CV</h1>
+    <p>Znacznie przyspiesz rekrutację dzięki naszej aplikacji do automatycznej analizy CV kandydatów</p>
+    <button (click)="goToAnalizer()">Zacznij teraz</button>
+    </div>
+    <div class="hero-image">
+        <fa-icon [icon]="faIdCard" [style]="{'font-size':'7em', margin:'0.5rem'}"/>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-text">
+    <h2>Jak to działa</h2>
+    <p>Poznaj trzy proste kroki, dzięki którym automatycznie ocenimy CV Twoich kandydatów</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <fa-icon [icon]="faFileArrowUp" [style]="{'font-size':'4em',color:'#000d3c'}"/>
+        <h3>Prześlij</h3>
+        <p>Dodaj plik CV, który chcesz przeanalizować i kliknij „Oceń”</p>
+      </div>
+      <div class="card">
+        <fa-icon [icon]="faDisplay" [style]="{'font-size':'4em', color: '#000d3c'}"/>
+        <h3>Oceń</h3>
+        <p>Nasza aplikacja natychmiast oceni i przypisze wynik CV kandydata</p>
+      </div>
+      <div class="card">
+        <fa-icon [icon]="faSquareCheck" [style]="{'font-size':'4em',color: '#000d3c'}"/>
+        <h3>Działaj</h3>
+        <p>Gotowe! Zdecyduj, czy chcesz przejść dalej z kandydatem</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    (C) Resumeo. Wszelkie prawa zastrzeżone
+  </footer>
+</div>
