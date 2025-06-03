@@ -1,0 +1,38 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #001f5c;
+  color: white;
+  padding: 1rem 1.5rem;
+  height: 2.5vh;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 1.5rem;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+  background-color: #000d3c;
+  color: white;
+  align-items: center;
+  padding-left: 1rem;
+  height: 10vh;
+}
+.logo div {
+  display: flex;
+  flex-direction: column;
+}
+.logo-text {
+  font-weight: bold;
+  font-size: 1.75em;
+}
+.slogan {
+  font-size: 0.7em;
+}
+

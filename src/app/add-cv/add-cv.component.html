@@ -1,0 +1,25 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <a class="toolbar-item" routerLink="/add-cv" style="cursor:pointer">
+        <fa-icon [icon]="faPlusCircle" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
+        <p>Dodaj CV</p>
+      </a>
+      <a class="toolbar-item" routerLink="/positions" style="cursor:pointer">
+        <fa-icon [icon]="faGears" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
+        <p>Stanowiska</p>
+      </a>
+    </div>
+    <div class="toolbar-right">
+      <fa-icon [icon]="faStar" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
+      <fa-icon [icon]="faStar" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
+      <fa-icon [icon]="faStarHalfStroke" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
+      <p>Oceń</p>
+    </div>
+  </div>
+
+  <footer>
+    (C) Resumeo. Wszelkie prawa zastrzeżone
+  </footer>
+</div>

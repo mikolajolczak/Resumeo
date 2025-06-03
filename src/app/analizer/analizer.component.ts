@@ -3,10 +3,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faIdCard, faFileArrowUp, faDisplay, faSquareCheck, faPlusCircle, faGears, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedinIn, faFacebookF, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { NgFor } from '@angular/common';
+import {RouterLink} from '@angular/router';
+import {HeaderComponent} from '../header/header.component';
 
 @Component({
   selector: 'app-analizer',
-  imports: [FontAwesomeModule, NgFor],
+  imports: [FontAwesomeModule, NgFor, RouterLink, HeaderComponent],
   templateUrl: './analizer.component.html',
   styleUrl: './analizer.component.css'
 })
