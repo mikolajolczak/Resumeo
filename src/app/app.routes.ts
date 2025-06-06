@@ -21,4 +21,8 @@ export const routes: Routes = [
     path: 'add-cv',
     loadComponent: () => import('./add-cv/add-cv.component').then(m => m.AddCvComponent)
   },
+  {
+    path: 'add-position',
+    loadComponent: () => import('./positions/add-position/add-position.component').then(m => m.AddPositionComponent)
+  },
 ];

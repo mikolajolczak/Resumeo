@@ -1,1 +1,34 @@
-<p>positions works!</p>
+<div class="container">
+  <app-header></app-header>
+  <div class="toolbar">
+    <div class="toolbar-left">
+    <a class="toolbar-item" routerLink="/add-position" style="cursor:pointer">
+        <fa-icon [icon]="faPlusCircle" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
+        <p>Dodaj Stanowisko</p>
+    </a>
+    <a class="toolbar-item" routerLink="/analizer" style="cursor:pointer">
+        <fa-icon [icon]="faRankingStar" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
+        <p>Analizator</p>
+    </a>
+    </div>
+  </div>
+    <div class="table">
+    <div class="table-row">
+        <div>Lp.</div>
+        <div>Stanowisko</div>
+        <div>Liczba aplikacji</div>
+        <div>Ostatnia data modyfikacji</div>
+        <div>Opcje</div>
+    </div>
+    <div *ngFor="let position of positions; let i = index" class="table-row">
+        <div>{{ i + 1 }}</div>
+        <div>{{position.name}}</div>
+        <div>{{position.number_of_candidates}}</div>
+        <div>{{position.date}}</div>
+        <div>Akcja</div>
+    </div>
+  </div>
+  <footer>
+    (C) Resumeo. Wszelkie prawa zastrzeżone
+  </footer>
+</div>

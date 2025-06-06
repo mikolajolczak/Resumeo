@@ -19,12 +19,8 @@ export class DashboardComponent {
   faFileArrowUp = faFileArrowUp;
   faDisplay = faDisplay;
   faSquareCheck = faSquareCheck;
-  ngOnInit() {
-    console.log('DashboardComponent initialized');
-  }
   constructor(private router: Router) { }
   goToAnalizer() {
-    console.log('Navigating to Analizer');
     this.router.navigate(['/analizer']);
   }
 }

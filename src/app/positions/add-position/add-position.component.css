@@ -1,0 +1,102 @@
+footer {
+  background-color: #001f5c;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #001f5c;
+  color: white;
+  padding: 1rem 1.5rem;
+  height: 1.5vh;
+}
+
+.toolbar-item {
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  color:white;
+  text-decoration: none;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.creator {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: #c7c7c7;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.creator div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.creator p {
+  margin: 0 0 0.2rem;
+  font-weight: bold;
+  color: #333;
+  font-size: 1rem;
+}
+
+.creator input[type="text"],
+.creator input[type="number"],
+.creator input[type="date"],
+.creator textarea {
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: border-color 0.3s;
+}
+
+.creator input:focus,
+.creator textarea:focus {
+  outline: none;
+  border-color: #007BFF;
+}
+
+.creator textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+.save-btn {
+  padding: 0.5rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.save-btn:hover {
+  background-color: #0056b3;
+}
