@@ -69,6 +69,8 @@ footer {
   margin-right: 2rem;
   display: flex;
   flex-direction: row;
+  color:white;
+  text-decoration: none;
 }
 
 .toolbar-left {
@@ -80,6 +82,8 @@ footer {
   display: flex;
   align-items: center;
 }
+
+
 
 .table {
   margin-left: 10vw;

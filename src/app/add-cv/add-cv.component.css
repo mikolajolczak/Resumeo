@@ -1,0 +1,116 @@
+footer {
+  background-color: #001f5c;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #001f5c;
+  color: white;
+  padding: 1rem 1.5rem;
+  height: 1.5vh;
+}
+
+.toolbar-item {
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  color:white;
+  text-decoration: none;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.creator{
+    flex-grow: 1;
+    padding: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;;
+    gap: 10rem
+}
+
+.dropzone {
+  border: 0.2rem dashed #001f5c;
+  border-radius: 0.6rem;
+  padding: 2rem;
+  text-align: center;
+  color: #001f5c;
+  background-color: #f0f4ff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  justify-content: center;
+}
+
+.dropzone-container{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex:0.5;
+    flex-direction: column;
+}
+
+button{
+    background-color: #000d3c;
+    color: white;
+    border-radius: 0.25rem;
+    border: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+
+  button.disabled, button:disabled {
+  background-color: #888888;
+  color: #cccccc;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dropzone.active {
+  background-color: #dce7ff;
+  border-color: #0039a6;
+}
+
+.dropzone p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.pdf-preview-container {
+  height: auto;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior:auto;
+  flex:0.5;
+  padding-right: 1rem;
+}
+
+
+.pdf-preview {
+  height: 69vh;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
