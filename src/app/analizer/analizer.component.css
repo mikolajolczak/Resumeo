@@ -117,6 +117,9 @@ footer {
   border: none;
   padding: 0.7rem 0.5rem;
   background: none;
+    height: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .table-row > div:nth-child(2) {

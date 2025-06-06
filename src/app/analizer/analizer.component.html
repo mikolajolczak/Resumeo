@@ -33,7 +33,16 @@
         <div>{{candidate.appointment}}</div>
         <div>{{candidate.date}}</div>
         <div>{{candidate.score}}</div>
-        <div>Akcja</div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem;">
+          <fa-icon [icon]="faXmark"></fa-icon>
+          <p>Usuń</p>
+        </div>
+        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem;">
+          <fa-icon [icon]="faFilePen"></fa-icon>
+          <p>Sczegóły</p>
+        </div>
+        </div>
     </div>
   </div>
 

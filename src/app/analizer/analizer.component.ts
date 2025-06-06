@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faIdCard, faFileArrowUp, faDisplay, faSquareCheck, faPlusCircle, faGears, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
+import { faIdCard, faFileArrowUp, faDisplay, faSquareCheck, faPlusCircle, faGears, faStar, faStarHalfStroke, faXmark, faFilePen } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedinIn, faFacebookF, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { NgFor } from '@angular/common';
 import {RouterLink} from '@angular/router';
@@ -24,6 +24,8 @@ export class AnalizerComponent {
   faGears = faGears;
   faStar = faStar;
   faStarHalfStroke = faStarHalfStroke;
+  faXmark=faXmark
+  faFilePen=faFilePen;
 
   candidates: {name:string, score:number, date:string, appointment: string}[]=[
     {name: 'John Doe', score: 85, date: '2023-10-01', appointment: 'junior developer'},

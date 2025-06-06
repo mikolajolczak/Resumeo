@@ -95,6 +95,7 @@ footer {
   align-items: center;
   text-align: center;
   transition: background 0.2s, box-shadow 0.2s;
+  justify-content: center;
 }
 
 .table-row:hover {
@@ -110,6 +111,9 @@ footer {
   border: none;
   padding: 0.7rem 0.5rem;
   background: none;
+  height: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .table-row > div:nth-child(2) {
