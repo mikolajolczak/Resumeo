@@ -1,1 +1,59 @@
-<p>applicant-details works!</p>
+<div class="container">
+  <app-header></app-header>
+  <div class="toolbar">
+    <div class="toolbar-left">
+    <a class="toolbar-item" routerLink="/analizer" style="cursor:pointer">
+        <p>Powrót</p>
+    </a>
+    </div>
+  </div>
+  <div class="cv-container">
+  <div class="left-section">
+    <h1><strong>Jan Kowalski</strong></h1>
+    <h3>Młodszy programista</h3>
+
+    <button class="download-btn">
+      <fa-icon [icon]="faDownload"></fa-icon> Pobierz CV
+    </button>
+
+    <div class="section">
+      <h4><strong>Kompetencje:</strong></h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+
+    <div class="section">
+      <h4><strong>Czym osoba aplikująca wyróżnia się na tle innych:</strong></h4>
+      <p>
+        Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      </p>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <h2>Ocena: <span class="score">75%</span></h2>
+    
+    <div class="pros">
+      <h4><strong>Zalety:</strong></h4>
+      <ul>
+        <li>Zaleta 1</li>
+        <li>Zaleta 2</li>
+        <li>Zaleta 3</li>
+      </ul>
+    </div>
+
+    <div class="cons">
+      <h4><strong>Wady:</strong></h4>
+      <ul>
+        <li>Zaleta 1</li>
+        <li>Zaleta 2</li>
+        <li>Zaleta 3</li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <footer>
+    (C) Resumeo. Wszelkie prawa zastrzeżone
+  </footer>
+</div>

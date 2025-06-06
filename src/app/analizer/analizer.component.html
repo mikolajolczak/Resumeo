@@ -34,14 +34,14 @@
         <div>{{candidate.date}}</div>
         <div>{{candidate.score}}</div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem;">
+        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; cursor: pointer;" (click)="deleteCandidate(candidate)">
           <fa-icon [icon]="faXmark"></fa-icon>
           <p>Usuń</p>
         </div>
-        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem;">
+        <a style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; text-decoration: none; color: black" routerLink="/applicant-details">
           <fa-icon [icon]="faFilePen"></fa-icon>
           <p>Sczegóły</p>
-        </div>
+        </a>
         </div>
     </div>
   </div>

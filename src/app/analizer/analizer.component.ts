@@ -32,5 +32,10 @@ export class AnalizerComponent {
     {name: 'Jane Smith', score: 90, date: '2023-10-02', appointment: 'senior developer'},
     {name: 'Alice Johnson', score: 78, date: '2023-10-03', appointment: 'project manager'},
   ]
-
+  deleteCandidate(candidate: {name:string, score:number, date:string, appointment: string}) {
+    const index = this.candidates.indexOf(candidate);
+    if (index > -1) {
+      this.candidates.splice(index, 1);
+    }
+  }
 }
