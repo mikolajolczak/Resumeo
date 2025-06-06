@@ -25,4 +25,8 @@ export const routes: Routes = [
     path: 'add-position',
     loadComponent: () => import('./positions/add-position/add-position.component').then(m => m.AddPositionComponent)
   },
+    {
+    path: 'edit-position',
+    loadComponent: () => import('./positions/edit-position/edit-position.component').then(m => m.EditPositionComponent)
+  },
 ];

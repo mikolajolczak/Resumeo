@@ -26,15 +26,11 @@
         <div>{{position.number_of_candidates}}</div>
         <div>{{position.date}}</div>
         <div style="display: flex; flex-direction: row; justify-content: space-between;">
-        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem;">
+        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; cursor: pointer;" (click)="removePosition(position)">
           <fa-icon [icon]="faXmark"></fa-icon>
           <p>Usuń</p>
         </div>
-        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem;">
-          <fa-icon [icon]="faFilePen"></fa-icon>
-          <p>Sczegóły</p>
-        </div>
-        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem;">
+        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; text-decoration: none; color: black; cursor: pointer;" (click)="goToEditPosition(position)">
           <fa-icon [icon]="faBook"></fa-icon>
           <p>Edytuj</p>
         </div>

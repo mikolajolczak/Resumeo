@@ -1,1 +1,54 @@
-<p>edit-position works!</p>
+<div class="container">
+  <app-header></app-header>
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <a class="toolbar-item" routerLink="/add-position" style="cursor:pointer">
+        <fa-icon [icon]="faPlusCircle" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
+        <p>Dodaj CV</p>
+      </a>
+      <a class="toolbar-item" routerLink="/positions" style="cursor:pointer">
+        <fa-icon [icon]="faRankingStar" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
+        <p>Stanowiska</p>
+      </a>
+    </div>
+    <div class="toolbar-right">
+      <a class="toolbar-item" routerLink="/positions" style="cursor:pointer">
+        <p>Powrót</p>
+      </a>
+    </div>
+  </div>
+<div class="creator" *ngIf="position!==undefined">
+  <div>
+    <p>Nazwa stanowiska</p>
+    <input type="text" [(ngModel)]="position.name" placeholder="Nazwa stanowiska" />
+  </div>
+  <div>
+    <p>Liczba kandydatów</p>
+    <input type="number" [(ngModel)]="position.number_of_candidates" placeholder="Liczba kandydatów" />
+  </div>
+  <div>
+    <p>Data</p>
+    <input type="date" [(ngModel)]="position.date" placeholder="Data" />
+  </div>
+  <div>
+    <p>Opis</p>
+    <input type="text" [(ngModel)]="position.description" placeholder="Opis stanowiska"/>
+  </div>
+  <div>
+    <p>Kompetencje</p>
+    <input type="text" [(ngModel)]="position.competence" placeholder="Kompetencje wymagane" />
+  </div>
+  <div>
+    <p>Słowa kluczowe</p>
+    <input type="text" [(ngModel)]="position.keywords" placeholder="Słowa kluczowe" />
+  </div>
+
+
+</div>
+  <div style="text-align: right;">
+  <button class="save-btn" (click)="savePosition()">Zapisz</button>
+</div>
+  <footer>
+    (C) Resumeo. Wszelkie prawa zastrzeżone
+  </footer>
+</div>

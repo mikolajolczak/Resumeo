@@ -3,7 +3,7 @@ import { faFacebookF, faLinkedinIn, faXTwitter } from '@fortawesome/free-brands-
 import { faDisplay, faFileArrowUp, faGears, faIdCard, faPlusCircle, faSquareCheck,faRankingStar, faXmark, faFilePen, faBook} from '@fortawesome/free-solid-svg-icons';
 import { HeaderComponent } from '../header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgFor } from '@angular/common';
 
 @Component({
@@ -32,4 +32,14 @@ export class PositionsComponent {
     {name: 'Developer', number_of_candidates: 2, date: '2023-10-02'},
     {name: 'Senior developer', number_of_candidates: 3, date: '2023-10-03'},
   ]
+
+  constructor(private router: Router) {}
+
+  removePosition(position:{name:string, number_of_candidates:number, date:string}) {
+    this.positions = this.positions.filter(p => p !== position);
+  }
+
+  goToEditPosition(position: { name: string; number_of_candidates: number; date: string; }) {
+  this.router.navigate(['/edit-position'], { state: { position } });
+  }
 }
