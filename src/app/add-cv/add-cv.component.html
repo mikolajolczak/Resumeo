@@ -33,6 +33,15 @@
          hidden 
          #fileInput />
 </div>
+<div>
+  <p>Wybierz stanowisko</p>
+  <select [(ngModel)]="selectedPositionName">
+    <option [value]="null">-- wybierz --</option>
+    <option *ngFor="let pos of positions" [value]="pos.name">
+      {{ pos.name }}
+    </option>
+  </select>
+</div>
   <button   [disabled]="pdfPreviews.length === 0" 
   [class.disabled]="pdfPreviews.length === 0"  (click)="sendFiles()">Prześlij CV</button>
 </div>

@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {HeaderComponent} from "../header/header.component";
 import {NgForOf} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import { faPlusCircle, faGears, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-cv',
-  imports: [FaIconComponent, HeaderComponent, RouterLink, NgForOf],
+  imports: [FaIconComponent, HeaderComponent, RouterLink, NgForOf, FormsModule],
   templateUrl: './add-cv.component.html',
   styleUrl: './add-cv.component.css'
 })
 export class AddCvComponent {
 
-  constructor(private sanitizer: DomSanitizer, private http: HttpClient) {}
+  constructor(private sanitizer: DomSanitizer, private http: HttpClient, private router: Router) {}
 
   faPlusCircle = faPlusCircle;
   faGears = faGears;
@@ -23,6 +24,16 @@ export class AddCvComponent {
   faStarHalfStroke = faStarHalfStroke;
 
   isDragging = false;
+  positions: { id: string, name: string }[] = [];
+  selectedPositionName: string | null = null;
+
+    ngOnInit(): void {
+    this.http.get<{ id: string, name: string }[]>('http://localhost:8080/api/positions')
+      .subscribe({
+        next: (data) => this.positions = data,
+        error: (err) => console.error('Błąd ładowania stanowisk:', err)
+      });
+  }
 
 onDragOver(event: DragEvent) {
   event.preventDefault();
@@ -75,13 +86,23 @@ handleFiles(files: FileList) {
 sendFiles() {
   const url = 'http://localhost:8080/api/candidates/upload';
 
+  let filesUploaded = 0;
+
   this.uploadedFiles.forEach(file => {
     const formData = new FormData();
     formData.append('file', file, file.name);
 
-    this.http.post(url, formData, {responseType:'text'}).subscribe({
+    if (this.selectedPositionName) {
+      formData.append('positionName', this.selectedPositionName);
+    }
+
+    this.http.post(url, formData, { responseType: 'text' }).subscribe({
       next: (response) => {
         console.log('Plik wysłany:', file.name, response);
+        filesUploaded++;
+        if (filesUploaded === this.uploadedFiles.length) {
+          this.router.navigate(['/analizer']);
+        }
       },
       error: (error: HttpErrorResponse) => {
         console.error('Błąd przy wysyłaniu pliku:', file.name, error.message);
