@@ -5,6 +5,7 @@ import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import { faPlusCircle, faGears, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-cv',
@@ -14,7 +15,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class AddCvComponent {
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer, private http: HttpClient) {}
 
   faPlusCircle = faPlusCircle;
   faGears = faGears;
@@ -51,24 +52,42 @@ onFileSelected(event: Event) {
 }
 
  pdfPreviews: { url: SafeResourceUrl, name: string }[] = [];
+ private uploadedFiles: File[] = [];
 
-  handleFiles(files: FileList) {
-    this.pdfPreviews = []; 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      if (file.type !== 'application/pdf') {
-        console.warn('Odrzucono plik (nie PDF):', file.name);
-        continue;
-      }
+handleFiles(files: FileList) {
+  this.pdfPreviews = [];
+  this.uploadedFiles = [];
 
-      const blobUrl = URL.createObjectURL(file);
-      const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(blobUrl);
-      this.pdfPreviews.push({ url: safeUrl, name: file.name });
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    if (file.type !== 'application/pdf') {
+      console.warn('Odrzucono plik (nie PDF):', file.name);
+      continue;
     }
-  }
 
-  sendFiles() {
-    console.log('Wysyłanie plików:', this.pdfPreviews);
+    const blobUrl = URL.createObjectURL(file);
+    const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(blobUrl);
+    this.pdfPreviews.push({ url: safeUrl, name: file.name });
+    this.uploadedFiles.push(file);
   }
+}
+
+sendFiles() {
+  const url = 'http://localhost:8080/api/candidates/upload';
+
+  this.uploadedFiles.forEach(file => {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+
+    this.http.post(url, formData, {responseType:'text'}).subscribe({
+      next: (response) => {
+        console.log('Plik wysłany:', file.name, response);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.error('Błąd przy wysyłaniu pliku:', file.name, error.message);
+      }
+    });
+  });
+}
 
 }

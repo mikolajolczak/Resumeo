@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faIdCard, faFileArrowUp, faDisplay, faSquareCheck, faPlusCircle, faGears, faStar, faStarHalfStroke, faXmark, faFilePen } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedinIn, faFacebookF, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { NgFor } from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {HeaderComponent} from '../header/header.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-analizer',
@@ -12,7 +13,7 @@ import {HeaderComponent} from '../header/header.component';
   templateUrl: './analizer.component.html',
   styleUrl: './analizer.component.css'
 })
-export class AnalizerComponent {
+export class AnalizerComponent implements OnInit {
   faIdCard = faIdCard;
   faLinkedinIn = faLinkedinIn;
   faFacebookF = faFacebookF;
@@ -27,15 +28,27 @@ export class AnalizerComponent {
   faXmark=faXmark
   faFilePen=faFilePen;
 
-  candidates: {name:string, score:number, date:string, appointment: string}[]=[
-    {name: 'John Doe', score: 85, date: '2023-10-01', appointment: 'junior developer'},
-    {name: 'Jane Smith', score: 90, date: '2023-10-02', appointment: 'senior developer'},
-    {name: 'Alice Johnson', score: 78, date: '2023-10-03', appointment: 'project manager'},
-  ]
-  deleteCandidate(candidate: {name:string, score:number, date:string, appointment: string}) {
-    const index = this.candidates.indexOf(candidate);
-    if (index > -1) {
-      this.candidates.splice(index, 1);
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+  this.http.get<{id: string, name: string, score: number, date: string, appointment: string}[]>(
+    'http://localhost:8080/api/candidates'
+  ).subscribe({
+    next: (data) => this.candidates = data,
+    error: (err) => console.error('Błąd pobierania kandydatów', err)
+  });
+}
+
+  candidates: {id: string, name: string, score: number, date: string, appointment: string}[] = [];
+  deleteCandidate(candidate: {id: string}) {
+  const url = `http://localhost:8080/api/candidates/${candidate.id}`;
+  this.http.delete(url).subscribe({
+    next: () => {
+      this.candidates = this.candidates.filter(c => c.id !== candidate.id);
+    },
+    error: err => {
+      console.error('Nie udało się usunąć kandydata:', err);
     }
-  }
+  });
+}
 }

@@ -1,18 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {faPlusCircle, faFilePen, faXmark, faGears, faDownload} from '@fortawesome/free-solid-svg-icons';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-applicant-details',
-  imports: [HeaderComponent, FontAwesomeModule, RouterLink],
+  standalone: true,
+  imports: [HeaderComponent, FontAwesomeModule, RouterLink, NgIf],
   templateUrl: './applicant-details.component.html',
   styleUrl: './applicant-details.component.css'
 })
-export class ApplicantDetailsComponent {
-  faGears=faGears;
+export class ApplicantDetailsComponent implements OnInit {
+  faGears = faGears;
   faPlusCircle = faPlusCircle;
-  faDownload=faDownload;
+  faDownload = faDownload;
 
+  candidate: any = null;
+
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.http.get<any[]>('http://localhost:8080/api/candidates').subscribe({
+      next: (list) => {
+        this.candidate = list.find(c => c.id === id);
+      },
+      error: err => {
+        console.error('Błąd pobierania danych kandydata', err);
+      }
+    });
+  }
 }

@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faFacebookF, faLinkedinIn, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faDisplay, faFileArrowUp, faGears, faIdCard, faPlusCircle, faSquareCheck,faRankingStar, faXmark, faFilePen, faBook} from '@fortawesome/free-solid-svg-icons';
+import {
+  faDisplay, faFileArrowUp, faGears, faIdCard, faPlusCircle, faSquareCheck,
+  faRankingStar, faXmark, faFilePen, faBook
+} from '@fortawesome/free-solid-svg-icons';
 import { HeaderComponent } from '../header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Router, RouterLink } from '@angular/router';
 import { NgFor } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-positions',
-  imports: [HeaderComponent, FontAwesomeModule, RouterLink, NgFor],
   standalone: true,
+  imports: [HeaderComponent, FontAwesomeModule, RouterLink, NgFor],
   templateUrl: './positions.component.html',
   styleUrl: './positions.component.css'
 })
-export class PositionsComponent {
+export class PositionsComponent implements OnInit {
   faIdCard = faIdCard;
   faLinkedinIn = faLinkedinIn;
   faFacebookF = faFacebookF;
@@ -21,25 +25,40 @@ export class PositionsComponent {
   faFileArrowUp = faFileArrowUp;
   faDisplay = faDisplay;
   faSquareCheck = faSquareCheck;
-  faPlusCircle = faPlusCircle
+  faPlusCircle = faPlusCircle;
   faGears = faGears;
   faRankingStar = faRankingStar;
-  faXmark=faXmark;
-  faFilePen=faFilePen;
-  faBook=faBook;
-    positions: {name:string, number_of_candidates:number, date:string}[]=[
-    {name: 'Junior developer', number_of_candidates: 1, date: '2023-10-01'},
-    {name: 'Developer', number_of_candidates: 2, date: '2023-10-02'},
-    {name: 'Senior developer', number_of_candidates: 3, date: '2023-10-03'},
-  ]
+  faXmark = faXmark;
+  faFilePen = faFilePen;
+  faBook = faBook;
 
-  constructor(private router: Router) {}
+  positions: { id: string, name: string, number_of_candidates: number, date: string }[] = [];
 
-  removePosition(position:{name:string, number_of_candidates:number, date:string}) {
-    this.positions = this.positions.filter(p => p !== position);
+  constructor(private http: HttpClient, private router: Router) {}
+
+  ngOnInit(): void {
+    this.fetchPositions();
   }
 
-  goToEditPosition(position: { name: string; number_of_candidates: number; date: string; }) {
-  this.router.navigate(['/edit-position'], { state: { position } });
+  fetchPositions() {
+    this.http.get<{ id: string, name: string, number_of_candidates: number, date: string }[]>(
+      'http://localhost:8080/api/positions'
+    ).subscribe({
+      next: (data) => this.positions = data,
+      error: (err) => console.error('Błąd pobierania stanowisk', err)
+    });
+  }
+
+  removePosition(position: { id: string }) {
+    this.http.delete(`http://localhost:8080/api/positions/${position.id}`).subscribe({
+      next: () => {
+        this.positions = this.positions.filter(p => p.id !== position.id);
+      },
+      error: (err) => console.error('Błąd usuwania stanowiska', err)
+    });
+  }
+
+  goToEditPosition(position: { id: string; name: string; number_of_candidates: number; date: string }) {
+    this.router.navigate(['/edit-position', position.id]);
   }
 }

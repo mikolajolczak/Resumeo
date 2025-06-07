@@ -38,9 +38,9 @@
           <fa-icon [icon]="faXmark"></fa-icon>
           <p>Usuń</p>
         </div>
-        <a style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; text-decoration: none; color: black" routerLink="/applicant-details">
+        <a style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; text-decoration: none; color: black" [routerLink]="['/candidate', candidate.id]">
           <fa-icon [icon]="faFilePen"></fa-icon>
-          <p>Sczegóły</p>
+          <p>Szczegóły</p>
         </a>
         </div>
     </div>

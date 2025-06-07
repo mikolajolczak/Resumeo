@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlusCircle,faRankingStar } from '@fortawesome/free-solid-svg-icons';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-position',
@@ -22,11 +23,18 @@ export class AddPositionComponent {
 faPlusCircle=faPlusCircle;
 faRankingStar=faRankingStar;
 
-constructor(private router: Router) { }
+constructor(private http: HttpClient, private router: Router) { }
 
 savePosition() {
-    console.log('Position saved:', this.position);
-    this.router.navigate(['/positions']);
-  }
+  this.http.post('http://localhost:8080/api/positions', this.position).subscribe({
+    next: () => {
+      console.log('Dodano pozycję:', this.position);
+      this.router.navigate(['/positions']);
+    },
+    error: (err) => {
+      console.error('Błąd podczas dodawania pozycji', err);
+    }
+  });
+}
 
 }

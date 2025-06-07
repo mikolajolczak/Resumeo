@@ -14,7 +14,7 @@ export const routes: Routes = [
     loadComponent: () => import('./positions/positions.component').then(m => m.PositionsComponent)
   },
   {
-    path: 'applicant-details',
+    path: 'candidate/:id',
     loadComponent: () => import('./applicant-details/applicant-details.component').then(m => m.ApplicantDetailsComponent)
   },
   {
@@ -26,7 +26,7 @@ export const routes: Routes = [
     loadComponent: () => import('./positions/add-position/add-position.component').then(m => m.AddPositionComponent)
   },
     {
-    path: 'edit-position',
+    path: 'edit-position/:id',
     loadComponent: () => import('./positions/edit-position/edit-position.component').then(m => m.EditPositionComponent)
   },
 ];
