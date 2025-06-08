@@ -17,37 +17,37 @@
       </a>
     </div>
   </div>
-<div class="creator" *ngIf="position!==undefined">
-  <div>
-    <p>Nazwa stanowiska</p>
-    <input type="text" [(ngModel)]="position.name" placeholder="Nazwa stanowiska" />
-  </div>
-  <div>
-    <p>Liczba kandydatów</p>
-    <input type="number" [(ngModel)]="position.number_of_candidates" placeholder="Liczba kandydatów" />
-  </div>
-  <div>
-    <p>Data</p>
-    <input type="date" [(ngModel)]="position.date" placeholder="Data" />
-  </div>
-  <div>
-    <p>Opis</p>
-    <input type="text" [(ngModel)]="position.description" placeholder="Opis stanowiska"/>
-  </div>
-  <div>
-    <p>Kompetencje</p>
-    <input type="text" [(ngModel)]="position.competence" placeholder="Kompetencje wymagane" />
-  </div>
-  <div>
-    <p>Słowa kluczowe</p>
-    <input type="text" [(ngModel)]="position.keywords" placeholder="Słowa kluczowe" />
-  </div>
-
-
-</div>
+  @if (position!==undefined) {
+    <div class="creator">
+      <div>
+        <p>Nazwa stanowiska</p>
+        <input type="text" [(ngModel)]="position.name" placeholder="Nazwa stanowiska" />
+      </div>
+      <div>
+        <p>Liczba kandydatów</p>
+        <input type="number" [(ngModel)]="position.number_of_candidates" placeholder="Liczba kandydatów" />
+      </div>
+      <div>
+        <p>Data</p>
+        <input type="date" [(ngModel)]="position.date" placeholder="Data" />
+      </div>
+      <div>
+        <p>Opis</p>
+        <input type="text" [(ngModel)]="position.description" placeholder="Opis stanowiska"/>
+      </div>
+      <div>
+        <p>Kompetencje</p>
+        <input type="text" [(ngModel)]="position.competence" placeholder="Kompetencje wymagane" />
+      </div>
+      <div>
+        <p>Słowa kluczowe</p>
+        <input type="text" [(ngModel)]="position.keywords" placeholder="Słowa kluczowe" />
+      </div>
+    </div>
+  }
   <div style="text-align: right;">
-  <button class="save-btn" (click)="savePosition()">Zapisz</button>
-</div>
+    <button class="save-btn" (click)="savePosition()">Zapisz</button>
+  </div>
   <footer>
     (C) Resumeo. Wszelkie prawa zastrzeżone
   </footer>

@@ -5,12 +5,12 @@ import { HeaderComponent } from '../../header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlusCircle, faRankingStar } from '@fortawesome/free-solid-svg-icons';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-edit-position',
   standalone: true,
-  imports: [HeaderComponent, FontAwesomeModule, FormsModule, NgIf],
+  imports: [HeaderComponent, FontAwesomeModule, FormsModule],
   templateUrl: './edit-position.component.html',
   styleUrl: './edit-position.component.css'
 })

@@ -4,12 +4,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {faPlusCircle, faFilePen, faXmark, faGears, faDownload} from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-applicant-details',
   standalone: true,
-  imports: [HeaderComponent, FontAwesomeModule, RouterLink, NgIf],
+  imports: [HeaderComponent, FontAwesomeModule, RouterLink],
   templateUrl: './applicant-details.component.html',
   styleUrl: './applicant-details.component.css'
 })

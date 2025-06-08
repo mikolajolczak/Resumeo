@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faIdCard, faFileArrowUp, faDisplay, faSquareCheck, faPlusCircle, faGears, faStar, faStarHalfStroke, faXmark, faFilePen } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedinIn, faFacebookF, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import { NgFor } from '@angular/common';
+
 import {RouterLink} from '@angular/router';
 import {HeaderComponent} from '../header/header.component';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-analizer',
-  imports: [FontAwesomeModule, NgFor, RouterLink, HeaderComponent],
+  imports: [FontAwesomeModule, RouterLink, HeaderComponent],
   templateUrl: './analizer.component.html',
   styleUrl: './analizer.component.css'
 })

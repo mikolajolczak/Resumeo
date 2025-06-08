@@ -2,40 +2,42 @@
   <app-header></app-header>
   <div class="toolbar">
     <div class="toolbar-left">
-    <a class="toolbar-item" routerLink="/add-position" style="cursor:pointer">
+      <a class="toolbar-item" routerLink="/add-position" style="cursor:pointer">
         <fa-icon [icon]="faPlusCircle" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
         <p>Dodaj Stanowisko</p>
-    </a>
-    <a class="toolbar-item" routerLink="/analizer" style="cursor:pointer">
+      </a>
+      <a class="toolbar-item" routerLink="/analizer" style="cursor:pointer">
         <fa-icon [icon]="faRankingStar" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
         <p>Analizator</p>
-    </a>
+      </a>
     </div>
   </div>
-    <div class="table">
+  <div class="table">
     <div class="table-row">
-        <div>Lp.</div>
-        <div>Stanowisko</div>
-        <div>Liczba aplikacji</div>
-        <div>Ostatnia data modyfikacji</div>
-        <div>Opcje</div>
+      <div>Lp.</div>
+      <div>Stanowisko</div>
+      <div>Liczba aplikacji</div>
+      <div>Ostatnia data modyfikacji</div>
+      <div>Opcje</div>
     </div>
-    <div *ngFor="let position of positions; let i = index" class="table-row">
+    @for (position of positions; track position; let i = $index) {
+      <div class="table-row">
         <div>{{ i + 1 }}</div>
         <div>{{position.name}}</div>
         <div>{{position.number_of_candidates}}</div>
         <div>{{position.date}}</div>
         <div style="display: flex; flex-direction: row; justify-content: space-between;">
-        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; cursor: pointer;" (click)="removePosition(position)">
-          <fa-icon [icon]="faXmark"></fa-icon>
-          <p>Usuń</p>
+          <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; cursor: pointer;" (click)="removePosition(position)">
+            <fa-icon [icon]="faXmark"></fa-icon>
+            <p>Usuń</p>
+          </div>
+          <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; text-decoration: none; color: black; cursor: pointer;" (click)="goToEditPosition(position)">
+            <fa-icon [icon]="faBook"></fa-icon>
+            <p>Edytuj</p>
+          </div>
         </div>
-        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; text-decoration: none; color: black; cursor: pointer;" (click)="goToEditPosition(position)">
-          <fa-icon [icon]="faBook"></fa-icon>
-          <p>Edytuj</p>
-        </div>
-        </div>
-    </div>
+      </div>
+    }
   </div>
   <footer>
     (C) Resumeo. Wszelkie prawa zastrzeżone

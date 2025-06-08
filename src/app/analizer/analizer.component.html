@@ -2,48 +2,50 @@
   <app-header></app-header>
   <div class="toolbar">
     <div class="toolbar-left">
-    <a class="toolbar-item" routerLink="/add-cv" style="cursor:pointer">
+      <a class="toolbar-item" routerLink="/add-cv" style="cursor:pointer">
         <fa-icon [icon]="faPlusCircle" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
         <p>Dodaj CV</p>
-    </a>
-    <a class="toolbar-item" routerLink="/positions" style="cursor:pointer">
+      </a>
+      <a class="toolbar-item" routerLink="/positions" style="cursor:pointer">
         <fa-icon [icon]="faGears" [style]="{'font-size':'1.4em', margin:'0.7rem'}"/>
         <p>Stanowiska</p>
-    </a>
+      </a>
     </div>
     <div class="toolbar-right">
-        <fa-icon [icon]="faStar" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
-        <fa-icon [icon]="faStar" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
-        <fa-icon [icon]="faStarHalfStroke" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
-        <p>Oceń</p>
+      <fa-icon [icon]="faStar" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
+      <fa-icon [icon]="faStar" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
+      <fa-icon [icon]="faStarHalfStroke" [style]="{'font-size':'0.8em', margin:'0.1rem'}"/>
+      <p>Oceń</p>
     </div>
   </div>
   <div class="table">
     <div class="table-row">
-        <div>Lp.</div>
-        <div>Imię i nazwisko</div>
-        <div>Stanowisko</div>
-        <div>Data dodania</div>
-        <div>Ocena</div>
-        <div>Akcja</div>
+      <div>Lp.</div>
+      <div>Imię i nazwisko</div>
+      <div>Stanowisko</div>
+      <div>Data dodania</div>
+      <div>Ocena</div>
+      <div>Akcja</div>
     </div>
-    <div *ngFor="let candidate of candidates; let i = index" class="table-row">
+    @for (candidate of candidates; track candidate; let i = $index) {
+      <div class="table-row">
         <div>{{ i + 1 }}</div>
         <div>{{candidate.name}}</div>
         <div>{{candidate.appointment}}</div>
         <div>{{candidate.date}}</div>
         <div>{{candidate.score}}</div>
-                <div style="display: flex; flex-direction: row; justify-content: space-between;">
-        <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; cursor: pointer;" (click)="deleteCandidate(candidate)">
-          <fa-icon [icon]="faXmark"></fa-icon>
-          <p>Usuń</p>
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+          <div style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; cursor: pointer;" (click)="deleteCandidate(candidate)">
+            <fa-icon [icon]="faXmark"></fa-icon>
+            <p>Usuń</p>
+          </div>
+          <a style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; text-decoration: none; color: black" [routerLink]="['/candidate', candidate.id]">
+            <fa-icon [icon]="faFilePen"></fa-icon>
+            <p>Szczegóły</p>
+          </a>
         </div>
-        <a style="display: flex; flex-direction: row; margin-top: -0.4rem; padding-bottom: 1.1rem; text-decoration: none; color: black" [routerLink]="['/candidate', candidate.id]">
-          <fa-icon [icon]="faFilePen"></fa-icon>
-          <p>Szczegóły</p>
-        </a>
-        </div>
-    </div>
+      </div>
+    }
   </div>
 
   <footer>

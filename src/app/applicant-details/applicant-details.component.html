@@ -1,63 +1,47 @@
-<div class="container" *ngIf="candidate">
-  <app-header></app-header>
-
-  <div class="toolbar">
-    <div class="toolbar-left">
-      <a class="toolbar-item" routerLink="/analizer" style="cursor:pointer">
-        <p>Powrót</p>
-      </a>
+@if (candidate) {
+  <div class="container">
+    <app-header></app-header>
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <a class="toolbar-item" routerLink="/analizer" style="cursor:pointer">
+          <p>Powrót</p>
+        </a>
+      </div>
     </div>
+    <div class="cv-container">
+      <div class="left-section">
+        <h1><strong>{{ candidate.name }}</strong></h1>
+        <h3>{{ candidate.appointment }}</h3>
+        <button class="download-btn">
+          <fa-icon [icon]="faDownload"></fa-icon> Pobierz CV
+        </button>
+        <div class="section">
+          <h4><strong>Data aplikacji:</strong></h4>
+          <p>{{ candidate.date }}</p>
+        </div>
+        <div class="section">
+          <h4><strong>Kompetencje:</strong></h4>
+          <p>{{ candidate.competences }}</p>
+        </div>
+        <div class="section">
+          <h4><strong>Czym osoba aplikująca się wyróżnia:</strong></h4>
+          <p>{{ candidate.standout }}</p>
+        </div>
+      </div>
+      <div class="right-section">
+        <h2>Ocena: <span class="score">{{ candidate.score }}%</span></h2>
+        <div class="pros">
+          <h4><strong>Zalety:</strong></h4>
+          <p>{{ candidate.pros }}</p>
+        </div>
+        <div class="cons">
+          <h4><strong>Wady:</strong></h4>
+          <p>{{ candidate.cons }}</p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      (C) Resumeo. Wszelkie prawa zastrzeżone
+    </footer>
   </div>
-
-  <div class="cv-container">
-    <div class="left-section">
-      <h1><strong>{{ candidate.name }}</strong></h1>
-      <h3>{{ candidate.appointment }}</h3>
-
-      <button class="download-btn">
-        <fa-icon [icon]="faDownload"></fa-icon> Pobierz CV
-      </button>
-
-      <div class="section">
-        <h4><strong>Data aplikacji:</strong></h4>
-        <p>{{ candidate.date }}</p>
-      </div>
-
-      <div class="section">
-        <h4><strong>Kompetencje:</strong></h4>
-        <p>
-          Kompetencje nie zostały określone
-        </p>
-      </div>
-
-      <div class="section">
-        <h4><strong>Czym osoba aplikująca się wyróżnia:</strong></h4>
-        <p>
-          Informacja nie została podana
-        </p>
-      </div>
-    </div>
-
-    <div class="right-section">
-      <h2>Ocena: <span class="score">{{ candidate.score }}%</span></h2>
-
-      <div class="pros">
-        <h4><strong>Zalety:</strong></h4>
-        <ul>
-          <li>Brak danych</li>
-        </ul>
-      </div>
-
-      <div class="cons">
-        <h4><strong>Wady:</strong></h4>
-        <ul>
-          <li>Brak danych</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    (C) Resumeo. Wszelkie prawa zastrzeżone
-  </footer>
-</div>
+}

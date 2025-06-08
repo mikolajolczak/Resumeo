@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {HeaderComponent} from "../header/header.component";
-import {NgForOf} from "@angular/common";
+
 import {Router, RouterLink} from "@angular/router";
 import { faPlusCircle, faGears, faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-cv',
-  imports: [FaIconComponent, HeaderComponent, RouterLink, NgForOf, FormsModule],
+  imports: [FaIconComponent, HeaderComponent, RouterLink, FormsModule],
   templateUrl: './add-cv.component.html',
   styleUrl: './add-cv.component.css'
 })

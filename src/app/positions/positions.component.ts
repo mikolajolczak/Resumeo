@@ -7,13 +7,13 @@ import {
 import { HeaderComponent } from '../header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Router, RouterLink } from '@angular/router';
-import { NgFor } from '@angular/common';
+
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-positions',
   standalone: true,
-  imports: [HeaderComponent, FontAwesomeModule, RouterLink, NgFor],
+  imports: [HeaderComponent, FontAwesomeModule, RouterLink],
   templateUrl: './positions.component.html',
   styleUrl: './positions.component.css'
 })
